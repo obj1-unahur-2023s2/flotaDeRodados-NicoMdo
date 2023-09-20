@@ -6,8 +6,8 @@ class Corsa{
 
 }
 
-class kwid{
-  var property conTanqueAdicional = False
+class Kwid{
+  var property conTanqueAdicional = false
   method capacidad() = if (conTanqueAdicional){3}else{4}
   method velocidad() = if (conTanqueAdicional){120}else{110}
   method peso() = if (conTanqueAdicional){1200 + 150}else{1200}
@@ -22,7 +22,7 @@ object traffic{
     motor = unMotor
   }
   method capacidad() = interior.capacidad()
-  method velocidad() = motor.veolcidad()
+  method velocidad() = motor.velocidad()
   method peso() = 4000 + motor.peso() + interior.peso()
   method color() = "blanco"
 
@@ -44,14 +44,14 @@ object interiorComodo{
 }
 
 
-object interiorPopoluar {
-  method capcidad() = 12
+object interiorPopular {
+  method capacidad() = 12
   method peso() = 1000
 }
 
 class AutosEspeciales{
   var property capacidad
-  var var property velocidad
+  var property velocidad
   var property peso
   var property color
 

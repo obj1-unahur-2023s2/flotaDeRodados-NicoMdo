@@ -1,0 +1,55 @@
+import dependencia.*
+import rodados.*
+
+
+describe "Test de Dependencias"{
+	const deportes = new Dependencia(cantidadEmpleado = 45 )
+	const cultura = new Dependencia(cantidadEmpleado = 31 )
+	
+	
+	method initialize(){
+		const cachito = new Corsa(color="rojo")
+		
+		deportes.agregarAFlota(cachito)
+		deportes.agregarAFlota(new Corsa(color="azul"))
+		deportes.agregarAFlota(new Corsa(color="verde"))
+		deportes.agregarAFlota(new Kwid(conTanqueAdicional= true))
+		deportes.agregarAFlota(new AutosEspeciales(capacidad=5,velocidad=160,peso=1200,color="beige"))
+		cultura.agregarAFlota(cachito)
+		cultura.agregarAFlota(new Kwid(conTanqueAdicional= true))
+		cultura.agregarAFlota(new Kwid(conTanqueAdicional= true))
+		cultura.agregarAFlota(new Kwid())
+		traffic.configurar(interiorPopular, motorBataton)
+		cultura.agregarAFlota(traffic)
+	}
+
+
+test "peso total de la flota de deporte"{
+	assert.equals(1300*3+1350+1200,deportes.pesoTotalFlota())
+}
+
+test "peso total de la flota de cultura"{
+	assert.equals(1300+1350*2+1200+5500,cultura.pesoTotalFlota())
+}
+
+test "estan bien equipadas en deportes"{
+	assert.that(deportes.estaBienEquipada())
+}
+
+test "estan bien equipadas en cultura"{
+	assert.notThat(cultura.estaBienEquipada())
+}
+test "capacidad total en deporte para color azul"{
+	assert.equals(7,deportes.capacidadTotalEnColor("azul"))
+}
+test "capacidad total en cultura para color azul"{
+	assert.equals(10,cultura.capacidadTotalEnColor("azul"))
+}
+test "capacidad faltante en deportes"{
+	assert.equals(25,deportes.capacidadFaltante())
+}
+test "capacidad faltante en cultura"{
+	assert.equals(5,cultura.capacidadFaltante())
+}
+
+}

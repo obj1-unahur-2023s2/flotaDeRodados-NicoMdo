@@ -32,4 +32,11 @@
 		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
 		<nature>org.uqbar.project.wollok.wollokNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>flotaDeRodados-NicoMdo</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -1,10 +1,13 @@
 import rodados.*
+import pedidos.*
 
 class Dependencia{
   var property cantidadEmpleado = 0
   const rodados = []
+  const pedidos = []
 
-  method capcidadDeLaFlota(){
+
+  method capacidadDeLaFlota(){
     return rodados.sum({r=>r.capacidad()})
   }
 
@@ -29,7 +32,7 @@ class Dependencia{
   }
 
   method rodadosDeUnColor(color){
-    return rodados.filter({r=>r.color()=color})
+    return rodados.filter({r=>r.color() == color})
   }
 
   method capacidadTotalEnColor(color){
@@ -43,16 +46,26 @@ class Dependencia{
   method rodadoMasRapido(){
     if (rodados.isEmpty()){
       self.error("No se puede en listaq vacia")
+      }
     return rodados.max({r=>r.velocidad()})
   }
 
-  method capcidadFaltante(){
+  method capacidadFaltante(){
     return 0.max(cantidadEmpleado - self.capacidadDeLaFlota())
   }
 
   method esGrande(){
     return cantidadEmpleado > 40 and rodados.size() >= 5
   }
+  
+  method ningunoSatisface(pedido){
+  	// return rodados.all(r => not pedido.puedeSerSatisfechoPor(r))    <--- otra alternativa
+  	return rodados.any({r => pedido.puedeSerSatisfechoPor(r)})
+  }
+  method pedidosInsatisfechos(pedido){
+  	return pedidos.filter({p => self.ningunoSatisface(p)})
+  }
 
 
 }
+
